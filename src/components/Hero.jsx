@@ -1,7 +1,7 @@
 import React from 'react';
 import boyImage from '../assets/boy.png';
-import spinachImage from '../assets/spinach.png'; // Make sure this path is correct
-import carrotImage from '../assets/carrot.png';   // Make sure this path is correct
+import spinachImage from '../assets/spinach.png';
+import carrotImage from '../assets/carrot.png';
 
 // A reusable component for the product cards (Spinach, Carrot)
 const ProductCard = ({ image, name, price }) => {
@@ -17,6 +17,8 @@ const ProductCard = ({ image, name, price }) => {
 const Hero = () => {
   return (
     <section className="relative bg-white pt-6 pb-10 overflow-hidden lg:min-h-[calc(100vh-60px)] flex items-center">
+      {/* Background elements - abstract shapes */}
+      {/* These will appear behind the content */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-gray-50 via-white to-white z-0 opacity-70 hidden md:block"></div>
       <div className="absolute top-1/4 right-0 w-64 h-64 border-2 border-orange-200 rounded-full opacity-50 z-0 hidden lg:block"></div>
       <div className="absolute bottom-1/4 right-1/4 w-32 h-32 border-2 border-yellow-200 rounded-full opacity-50 z-0 hidden lg:block"></div>
@@ -73,19 +75,25 @@ const Hero = () => {
           </div>
         </div>
 
-        
-        <div className="w-full md:w-1/2 flex justify-center md:justify-end mt-10 md:mt-0 relative">
-         
+        {/* Right Side - Image and Product Cards Container */}
+        {/* Changed to flex row and aligned items to center */}
+        <div className="w-full md:w-1/2 flex flex-col md:flex-row items-center md:items-start justify-center md:justify-end mt-10 md:mt-0 relative">
+
+          {/* Main P of the delivery boy */}
+          {/* Increased max-w for larger screens slightly to give more room for cards next to it */}
           <img
             src={boyImage}
             alt="Delivery boy with groceries"
-            className="w-full max-w-sm lg:max-w-md h-auto object-contain z-10"
+            className="w-full max-w-xs md:max-w-md lg:max-w-lg h-auto object-contain z-10 md:mr-4" /* Added md:mr-4 for spacing */
           />
 
-          <div className="absolute top-1/4 right-0 lg:right-10 flex flex-col space-y-4 transform translate-x-1/2 md:translate-x-0 lg:translate-x-1/4 xl:translate-x-1/2">
-            <ProductCard image={spinachImage} name="Fresh Spinach" price={12.00} />
-            <ProductCard image={carrotImage} name="Fresh Carrot" price={9.00} />
-          </div>
+          {/* Product Cards Container - Now a flex column, no longer absolutely positioned relative to parent image */}
+          {/* Aligned items to flex-start for top alignment of cards */}
+
+<div className="flex flex-row space-x-4 items-center md:flex-col md:space-x-0 md:space-y-4 md:items-start md:mt-10">
+    <ProductCard image={spinachImage} name="Fresh Spinach" price={12.00} />
+    <ProductCard image={carrotImage} name="Fresh Carrot" price={9.00} />
+</div>
         </div>
       </div>
     </section>
